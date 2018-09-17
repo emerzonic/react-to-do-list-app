@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route} from "react-router-dom";
+import Middleware from "./Components/Middleware";
+import User from "./Components/User/Users";
+import Todos from "./Components/Todo/Todos";
+import Header from "../src/Components/Sections/Header";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+
+const App = () => (
+  <Router>
+      <div className='ui raised very padded text container segment'>
+          <Header/>
+          <Route exact path="/" component={Middleware} />
+          <Route exact path="/todos" component={Todos}/>
+          <Route exact path="/login" component={User}/>
+          <Route exact path="/signup" component={User}/>
+          <Route exact path="/signout" component={User}/>
+    </div>
+  </Router>
+);
 
 export default App;
