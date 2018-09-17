@@ -1,28 +1,34 @@
-.App {
-  text-align: center;
+.ui.raised.segment, .ui.raised.segments {
+  margin-top: 10%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+
+.todo-item{
+	background: #fff;
+	height: 40px;
+	line-height: 40px;
+	color: #666
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.todo-item:nth-child(2n){
+	background: #f7f7f7;
 }
 
-.App-title {
-  font-size: 1.5em;
+.todo-item:hover .delete-button{
+	width: 40px;
+	transition:0.3s linear;
+	opacity:1.0;
+} 
+
+.delete-button{
+	width:0;
+	opacity:0;
 }
 
-.App-intro {
-  font-size: large;
+.ui.list .list>.item>.content, .ui.list>.item>.content {
+  line-height: 2.14285714em;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.todo{
+  width:33%;
 }
