@@ -2,22 +2,22 @@ var express = require('express');
 var router = express.Router();
 var Todo = require('../models/Todo');
 var User = require('../models/User');
-var key = process.env.REACT_APP_NYT_KEY;
 
-const todo = 'todo here';
 //==============================================
-//Route to add/save news article to user
+//Route to add/save news todo to user
 //==============================================
-router.post('/todos/:userId', (req, res) => {
+router.post('/todos/new/:userId', (req, res) => {
+    console.log(req.params.userId);
     User.findById(req.params.userId, (err, user) => {
         if (err) {
             console.log(err);
         } else {
-            Article.create(req.body, (err, article) => {
+            console.log(user);
+            Todo.create(req.body, (err, todo) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    user.todos.push(article);
+                    user.todos.push(todo);
                     user.save();
                     res.end();
                 }
@@ -44,7 +44,6 @@ router.get("/todos/:userId", (req, res) => {
         }
     });
 });
-
 
 // ==============================================
 // Route to delete an article
