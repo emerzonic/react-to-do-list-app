@@ -41,9 +41,9 @@ render() {
           <input type="password" name="password" placeholder="Password"/>
         </div>
           </div>
-        <button type="submit" className="ui orange button">Login</button>
-        <span>Don't have an account? </span>
-        <Link  className="ui item" to={"/signup"}>Sign Up</Link>
+        <button type="submit" className="ui blue basic button submit-button">Login</button>
+        <label>Don't have an account?</label>
+        <Link  className="ui item user-link" to={"/signup"}>Sign Up</Link>
         <div className="ui error message"></div>
       </form>
 
