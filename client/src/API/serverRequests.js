@@ -29,7 +29,7 @@ export default {
     return axios.post('/todos/new/' + userId, todo);
   },
 
-  // Deletes the todos with the given id
+  // Deletes the todo with the given id
   deleteTodos: function (todoId) {
     return axios.delete("/" + todoId);
   }
