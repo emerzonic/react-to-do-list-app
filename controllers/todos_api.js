@@ -7,12 +7,10 @@ var User = require('../models/User');
 //Route to add/save news todo to user
 //==============================================
 router.post('/todos/new/:userId', (req, res) => {
-    console.log(req.params.userId);
     User.findById(req.params.userId, (err, user) => {
         if (err) {
             console.log(err);
         } else {
-            console.log(user);
             Todo.create(req.body, (err, todo) => {
                 if (err) {
                     console.log(err);
@@ -28,7 +26,7 @@ router.post('/todos/new/:userId', (req, res) => {
 
 
 // ==============================================
-// Route to get all user saved todos
+// Route to get all user todos
 // ==============================================
 router.get("/todos/:userId", (req, res) => {
     User.findById(req.params.userId).populate('todos').exec((err, user) => {
@@ -48,8 +46,8 @@ router.get("/todos/:userId", (req, res) => {
 // ==============================================
 // Route to delete an article
 // ==============================================
-router.delete('/:id', (req, res) => {
-    Article.findByIdAndRemove(req.params.id, (err) => {
+router.delete('/:todoId', (req, res) => {
+    Todo.findByIdAndRemove(req.params.todoId, (err) => {
         if (err) {
             console.log(err);
         } else {
