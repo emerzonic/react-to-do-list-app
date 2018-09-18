@@ -1,35 +1,81 @@
 import React from 'react';
-import { Component } from 'react';
+import {
+    Component
+} from 'react';
+import API from "../../API/serverRequests";
+import TodoList from './TodoList'
+import TodoForm from './New';
 // import './save.css';
-// import Moment from 'moment';
 
 
-class Todo extends Component {
-  constructor(props) {
-      super(props);    
-    }
-      render() { 
-        //   console.log(this.props)
-        return ( 
-            <div className="ui middle aligned divided list">
-                {this.props.todos.length > 0 ? this.props.todos.map((todo, i) =>
-                    <div className="item todo-item" key={todo._id}>
-                    <div className="left floated content delete-button">
-                        <div className="ui red icon button delete-button">
-                        <i className="trash icon" 
-                            data-id={todo._id} 
-                            onClick={this.props.handleDelete} ></i>
-                        </div>
-                    </div>
-                    <div className="content">
-                      <span>{todo.title}</span>
-                    </div>
-                  </div>
-                ):""}
-                </div>    
-            )
+class Todos extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            todos: [],
+            todoText:'',
+            error:false
         }
+
+        this.handleOnChange = (e) => {
+            let target = e.target;
+            let value = target.value;
+            let name  = target.name;
+            this.setState({
+                [name]:value,
+                error:this.state.todoText.length?false:true,
+            })
+        }
+
+        this.handleSubmit = e =>{
+            e.preventDefault();
+            let todo = {
+                title:this.state.todoText
+            }
+            e.target.reset()
+            let userId = localStorage.getItem('todo_app_user_id')
+            API.addNewTodos(userId,todo)
+                .then(() => {
+                    this.getTodos()
+                })
+          }
+
+
+        this.handleDelete = e => {
+            e.preventDefault();
+            let todoId = e.target.getAttribute('data-id');
+            API.deleteTodos(todoId)
+                .then(() => {
+                    this.getTodos()
+                })
+        }
+    }
+
+    componentDidMount() {
+        this.getTodos();
+    }
+
+    getTodos = () => {
+        let userId = localStorage.getItem('todo_app_user_id')
+        API.getAllTodos(userId)
+            .then(res => {
+                // console.log(res.data)
+                this.setState({
+                    todos: res.data
+                })
+            })
+            .catch(err => console.log(err));
+    };
+    render() {
+        // console.log(this.state)
+        return (
+            <div>
+                <TodoForm hanldeOnChange={this.handleOnChange} 
+                          handleSubmit={this.handleSubmit}/>
+                <TodoList handleDelete={this.handleDelete} todos={this.state.todos}/>
+        </div>
+        );
+    }
 }
 
-export default Todo;
- 
+export default Todos;
