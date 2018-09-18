@@ -13,32 +13,32 @@ class Todos extends Component {
         super(props);
         this.state = {
             todos: [],
-            todoText:'',
-            error:false
+            todoText: '',
+            error: false
         }
 
         this.handleOnChange = (e) => {
             let target = e.target;
             let value = target.value;
-            let name  = target.name;
+            let name = target.name;
             this.setState({
-                [name]:value,
-                error:this.state.todoText.length?false:true,
+                [name]: value,
+                error: this.state.todoText.length ? false : true,
             })
         }
 
-        this.handleSubmit = e =>{
+        this.handleSubmit = e => {
             e.preventDefault();
             let todo = {
-                title:this.state.todoText
+                title: this.state.todoText
             }
             e.target.reset()
             let userId = localStorage.getItem('todo_app_user_id')
-            API.addNewTodos(userId,todo)
+            API.addNewTodos(userId, todo)
                 .then(() => {
                     this.getTodos()
                 })
-          }
+        }
 
 
         this.handleDelete = e => {
@@ -51,29 +51,28 @@ class Todos extends Component {
         }
     }
 
-    componentDidMount() {
-        this.getTodos();
-    }
-
     getTodos = () => {
         let userId = localStorage.getItem('todo_app_user_id')
         API.getAllTodos(userId)
             .then(res => {
-                // console.log(res.data)
                 this.setState({
                     todos: res.data
                 })
             })
             .catch(err => console.log(err));
     };
+
+    componentDidMount() {
+        this.getTodos();
+    }
+
     render() {
-        // console.log(this.state)
         return (
             <div>
-                <TodoForm hanldeOnChange={this.handleOnChange} 
-                          handleSubmit={this.handleSubmit}/>
-                <TodoList handleDelete={this.handleDelete} todos={this.state.todos}/>
-        </div>
+            <TodoForm hanldeOnChange={this.handleOnChange} 
+                      handleSubmit={this.handleSubmit}/>
+            <TodoList handleDelete={this.handleDelete} todos={this.state.todos}/>
+    </div>
         );
     }
 }
