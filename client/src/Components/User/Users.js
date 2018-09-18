@@ -18,7 +18,7 @@ class User extends Component {
             }
         };
 
-        //Fires when the signup form is submitted
+        //This method handle user sign up
         this.handleUserSignup = (newUser) => {
             API.sendNewUserData(newUser).then(res => {
                 if (res.data.username) {
@@ -37,9 +37,8 @@ class User extends Component {
             }).catch(err => console.log(err));
         }
 
-        //Fires when the login form is submitted
+        //This method handle user signin
         this.handleUserSignin = (user) => {
-            // console.log(user)
             API.sendLoginData(user).then(res => {
                 if (res.data.username) {
                     localStorage.setItem('user', res.data.username)
@@ -55,10 +54,9 @@ class User extends Component {
                     this.props.history.push('/login');
                 }
             }).catch(err => console.log(err));
-
         }
 
-        //This method handle user signout
+        //This method handles user signout
         this.handleUserSignout= (action) => {
             if(action === "positive"){
             localStorage.removeItem('todo_app_user_id');
