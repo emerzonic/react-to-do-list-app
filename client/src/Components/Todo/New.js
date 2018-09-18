@@ -5,9 +5,6 @@ import { Component } from 'react';
 
 
 class TodoForm extends Component {
-  constructor(props) {
-      super(props); 
-    }
       render() { 
         // console.log(this.props)
         return ( 
