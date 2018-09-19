@@ -3,7 +3,6 @@ import {
     Component
 } from 'react';
 import { Link } from "react-router-dom";
-// import './home.css';
 
 
 class SignUp extends Component {
@@ -32,7 +31,7 @@ render() {
             <div className="required field">
             <label>Username</label>
                 <div className="ui left icon input"> <i className="user icon"></i>
-                <input name="username" placeholder="Username" type="text" autoComplete="off"/>
+                <input className='invalid' name="username" placeholder="Username" type="text" autoComplete="off"/>
                 </div>
             </div>
             <div className="required field">
