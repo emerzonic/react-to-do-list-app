@@ -5,7 +5,6 @@ import {
 import API from "../../API/serverRequests";
 import TodoList from './TodoList'
 import TodoForm from './New';
-// import './save.css';
 
 
 class Todos extends Component {
@@ -14,7 +13,8 @@ class Todos extends Component {
         this.state = {
             todos: [],
             todoText: '',
-            error: false
+            error: false,
+            complete:false
         }
 
         this.handleOnChange = (e) => {
@@ -49,6 +49,17 @@ class Todos extends Component {
                     this.getTodos()
                 })
         }
+
+        this.toggleComplete = e => {
+            e.preventDefault();
+            let status = e.target.getAttribute('class');
+            //  console.log(status)
+            if (status==='pending') {
+                e.target.setAttribute('class', 'complete');
+            }else{
+            e.target.setAttribute('class', 'pending');
+            }
+        }
     }
 
     getTodos = () => {
@@ -71,7 +82,10 @@ class Todos extends Component {
             <div>
             <TodoForm hanldeOnChange={this.handleOnChange} 
                       handleSubmit={this.handleSubmit}/>
-            <TodoList handleDelete={this.handleDelete} todos={this.state.todos}/>
+            <TodoList handleDelete={this.handleDelete} 
+                      toggleComplete={this.toggleComplete} 
+                      complete={this.state.complete}
+                      todos={this.state.todos}/>
     </div>
         );
     }
