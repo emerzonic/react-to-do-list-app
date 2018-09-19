@@ -3,8 +3,6 @@ import {
     Component
 } from 'react';
 import { Link } from "react-router-dom";
-// import './home.css';
-
 
 class Login extends Component {
     constructor(props) {
