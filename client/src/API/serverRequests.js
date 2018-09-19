@@ -25,7 +25,6 @@ export default {
 
   // Saves an todos to the database
   addNewTodos: function (userId, todo) {
-    console.log(todo)
     return axios.post('/todos/new/' + userId, todo);
   },
 
