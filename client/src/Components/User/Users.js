@@ -6,7 +6,7 @@ import API from "../../API/serverRequests";
 import Login from "./Login";
 import SignUp from './SignUp';
 import Signout from './LogOut';
-// import './home.css';
+
 
 class User extends Component {
     constructor(props) {
