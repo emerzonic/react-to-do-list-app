@@ -1,7 +1,6 @@
 import React from 'react';
 // import Moment from 'moment';
 
-
 const TodoList = (props) => (
             <div className="ui middle aligned divided list">
                 {props.todos.length > 0 ? props.todos.map((todo, i) =>
@@ -14,7 +13,7 @@ const TodoList = (props) => (
                         </div>
                     </div>
                     <div className="content">
-                      <span>{todo.title}</span>
+                      <span className='pending' onClick={props.toggleComplete}>{todo.title}</span>
                     </div>
                   </div>
                 ):""}
