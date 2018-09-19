@@ -6,7 +6,6 @@ import API from "../../API/serverRequests";
 import TodoList from './TodoList'
 import TodoForm from './New';
 
-
 class Todos extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +13,6 @@ class Todos extends Component {
             todos: [],
             todoText: '',
             error: false,
-            complete:false
         }
 
         this.handleOnChange = (e) => {
@@ -23,21 +21,29 @@ class Todos extends Component {
             let name = target.name;
             this.setState({
                 [name]: value,
-                error: this.state.todoText.length ? false : true,
             })
         }
 
         this.handleSubmit = e => {
             e.preventDefault();
+            this.setState({
+                error: this.state.todoText.length >= 3 ? false : true,
+            })
+            e.target.reset()
+            setTimeout(()=>{      
+            if (this.state.error) {
+                return;
+            }
             let todo = {
                 title: this.state.todoText
             }
-            e.target.reset()
+            
             let userId = localStorage.getItem('todo_app_user_id')
             API.addNewTodos(userId, todo)
                 .then(() => {
                     this.getTodos()
                 })
+            }, 1000);
         }
 
 
@@ -50,10 +56,10 @@ class Todos extends Component {
                 })
         }
 
+
         this.toggleComplete = e => {
             e.preventDefault();
             let status = e.target.getAttribute('class');
-            //  console.log(status)
             if (status==='pending') {
                 e.target.setAttribute('class', 'complete');
             }else{
@@ -67,7 +73,8 @@ class Todos extends Component {
         API.getAllTodos(userId)
             .then(res => {
                 this.setState({
-                    todos: res.data
+                    todos: res.data,
+                    todoText:''
                 })
             })
             .catch(err => console.log(err));
@@ -78,16 +85,17 @@ class Todos extends Component {
     }
 
     render() {
-        return (
+            return (
             <div>
-            <TodoForm hanldeOnChange={this.handleOnChange} 
-                      handleSubmit={this.handleSubmit}/>
-            <TodoList handleDelete={this.handleDelete} 
-                      toggleComplete={this.toggleComplete} 
-                      complete={this.state.complete}
-                      todos={this.state.todos}/>
-    </div>
-        );
+                <TodoForm hanldeOnChange={this.handleOnChange} 
+                        handleSubmit={this.handleSubmit}
+                        error={this.state.error}/>
+                <TodoList handleDelete={this.handleDelete} 
+                        toggleComplete={this.toggleComplete} 
+                        complete={this.state.complete}
+                        todos={this.state.todos}/>
+            </div>
+                );
     }
 }
 
