@@ -8,14 +8,14 @@ html{
 
 
 .todo-item{
-	background: #fff;
+	background: #f7f7f7;
 	height: 40px;
 	line-height: 40px;
 	color: #666
 }
 
 .todo-item:nth-child(2n){
-	background: #f7f7f7;
+	background: #fff;
 }
 
 .todo-item:hover .delete-button{
@@ -47,13 +47,49 @@ html{
 	text-transform: uppercase;
 }
 
+.ui.segments{
+	margin-bottom: 0;
+}
 .user-link{
 	font-weight: bolder;
 	margin-left: 0.6rem;
 	padding-top:0.5rem;
+	transition:0.3s
 }
 
 .submit-button{
 	width:16.5rem;
+	transition:0.3s
+}
+
+.complete{
+	text-decoration: line-through;
+	font-weight: 100;
+}
+
+.pending{
+	text-decoration: none;
+	font-weight: bolder;
+	color:blue
+}
+
+.invalid{
+	border-color: red;
+}
+
+.valid{
+	border-color:rgb(3, 129, 3);
+}
+
+.hide{
+	visibility: hidden;
+	transform: 2s;
+}
+
+.show{
+	font-size: 12px;
+	color:red;
+	visibility: visible;
+	transform: 2s;
 }
 
