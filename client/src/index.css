@@ -8,5 +8,6 @@ body{
 	background-size: cover;
 	background-repeat: no-repeat;
 	font-family:roboto;
-	font-weight:normal; 
+  font-weight:normal;
+  height:100%; 
 }
