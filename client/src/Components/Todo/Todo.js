@@ -5,6 +5,7 @@ import {
 import API from "../../API/serverRequests";
 import TodoList from './TodoList'
 import TodoForm from './New';
+import '../../App.css'
 
 class Todos extends Component {
     constructor(props) {
@@ -30,19 +31,18 @@ class Todos extends Component {
                 error: this.state.todoText.length >= 3 ? false : true,
             })
             e.target.reset()
-            setTimeout(()=>{      
-            if (this.state.error) {
-                return;
-            }
-            let todo = {
-                title: this.state.todoText
-            }
-            
-            let userId = localStorage.getItem('todo_app_user_id')
-            API.addNewTodos(userId, todo)
-                .then(() => {
-                    this.getTodos()
-                })
+            setTimeout(() => {
+                if (this.state.error) {
+                    return;
+                }
+                let todo = {
+                    title: this.state.todoText
+                }
+                let userId = localStorage.getItem('todo_app_user_id')
+                API.addNewTodos(userId, todo)
+                    .then(() => {
+                        this.getTodos()
+                    })
             }, 1000);
         }
 
@@ -60,10 +60,10 @@ class Todos extends Component {
         this.toggleComplete = e => {
             e.preventDefault();
             let status = e.target.getAttribute('class');
-            if (status==='pending') {
+            if (status === 'pending') {
                 e.target.setAttribute('class', 'complete');
-            }else{
-            e.target.setAttribute('class', 'pending');
+            } else {
+                e.target.setAttribute('class', 'pending');
             }
         }
     }
@@ -74,7 +74,7 @@ class Todos extends Component {
             .then(res => {
                 this.setState({
                     todos: res.data,
-                    todoText:''
+                    todoText: ''
                 })
             })
             .catch(err => console.log(err));
@@ -85,7 +85,7 @@ class Todos extends Component {
     }
 
     render() {
-            return (
+        return (
             <div>
                 <TodoForm hanldeOnChange={this.handleOnChange} 
                         handleSubmit={this.handleSubmit}
@@ -95,7 +95,7 @@ class Todos extends Component {
                         complete={this.state.complete}
                         todos={this.state.todos}/>
             </div>
-                );
+        );
     }
 }
 
