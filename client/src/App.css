@@ -2,16 +2,27 @@ html{
 	height:100%
 }
 
-.ui.raised.segment, .ui.raised.segments {
-  margin-top: 10%;
+.ui.grid>.centered.column, .ui.grid>.row>.centered.column {
+	margin: 10% auto;
+	background: rgb(245, 246, 247);
+	padding:2rem;
 }
 
+.form-heading{
+	font-size: 1.5rem;
+	letter-spacing: 0.3rem;
+	color:rgb(121, 118, 118);
+}
+
+.ui.form .field>label {
+	color:rgb(121, 118, 118);
+}
 
 .todo-item{
 	background: #f7f7f7;
 	height: 40px;
 	line-height: 40px;
-	color: #666
+	color: #666;
 }
 
 .todo-item:nth-child(2n){
@@ -33,10 +44,6 @@ html{
   line-height: 2.14285714em;
 }
 
-.todo{
-  width:33%;
-}
-
 .ui.segments:not(.horizontal)>.segment:first-child {
 	background:#2980b9;	
 	padding: 10px 20px;
@@ -48,7 +55,7 @@ html{
 }
 
 .ui.segments{
-	margin-bottom: 0;
+	margin-bottom: 1rem;
 }
 .user-link{
 	font-weight: bolder;
@@ -57,9 +64,15 @@ html{
 	transition:0.3s
 }
 
-.submit-button{
-	width:16.5rem;
-	transition:0.3s
+.user-form .ui.button{
+	margin-bottom:0.5rem;
+	transition:0.3s;
+	font-size: 1.3rem;
+}
+
+.ui.basic.button{
+	font-weight: bolder;
+	letter-spacing: 0.2rem
 }
 
 .complete{
@@ -70,7 +83,7 @@ html{
 .pending{
 	text-decoration: none;
 	font-weight: bolder;
-	color:blue
+	color:rgb(8, 8, 104);
 }
 
 .invalid{
