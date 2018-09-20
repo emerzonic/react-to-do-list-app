@@ -56,7 +56,7 @@ class Todos extends Component {
                 })
         }
 
-
+        //This method handles todo update
         this.toggleComplete = e => {
             e.preventDefault();
             let newStatus = '';
