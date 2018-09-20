@@ -59,12 +59,20 @@ class Todos extends Component {
 
         this.toggleComplete = e => {
             e.preventDefault();
+            let newStatus = '';
+            let todoId = e.target.getAttribute('data-id');
             let status = e.target.getAttribute('class');
             if (status === 'pending') {
-                e.target.setAttribute('class', 'complete');
+                newStatus = 'Complete';
             } else {
-                e.target.setAttribute('class', 'pending');
+                newStatus = 'Pending';
             }
+            let updatedTodo = {status:newStatus}
+            API.updateTodos(todoId, updatedTodo)
+                .then(() => {
+                    this.getTodos()
+                })
+
         }
     }
 
@@ -85,6 +93,7 @@ class Todos extends Component {
     }
 
     render() {
+        console.log(this.state.todos)
         return (
             <div>
                 <TodoForm hanldeOnChange={this.handleOnChange} 
