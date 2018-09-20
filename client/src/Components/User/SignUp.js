@@ -3,11 +3,15 @@ import {
     Component
 } from 'react';
 import { Link } from "react-router-dom";
+import UsernameInput from '../Sections/UsernameInput';
+import PasswordInput from '../Sections/PasswordInput';
+import SubmitButton from '../Sections/SubmitButton';
 
 
 class SignUp extends Component {
     constructor(props) {
         super(props);
+        console.log(this)
     
     this.handleSubmit = e =>{
         e.preventDefault();
@@ -25,23 +29,13 @@ class SignUp extends Component {
 
 render() {
     return (
-            <form id="signinForm" className="ui form" onSubmit={this.handleSubmit}>
-            <h3>Sign Up</h3>
+            <form className="ui form user-form" onSubmit={this.handleSubmit}>
+            <h3 className="form-heading">Sign Up</h3>
             <div className="ui divider"></div>
-            <div className="required field">
-            <label>Username</label>
-                <div className="ui left icon input"> <i className="user icon"></i>
-                <input className='invalid' name="username" placeholder="Username" type="text" autoComplete="off"/>
-                </div>
-            </div>
-            <div className="required field">
-                <label>Password</label>
-                <div className="ui left icon input"><i className="lock icon"></i>
-            <input type="password" name="password" placeholder="Password"/>
-            </div>
-            </div>
-            <button type="submit" className="ui blue basic button submit-button">Submit</button>
-            <label>Already have an account? </label>
+                <UsernameInput/>
+                <PasswordInput/>
+                <SubmitButton {...this.props}/>
+                <label>Already have an account? </label>
             <Link  className="ui item user-link" to={"/login"}>Login here</Link>
             <div className="ui error message"></div>
         </form>
