@@ -75,6 +75,7 @@ class Todos extends Component {
         }
     }
 
+    //This method retrieves all the user todos from the database
     getTodos = () => {
         let userId = localStorage.getItem('todo_app_user_id')
         API.getAllTodos(userId)
