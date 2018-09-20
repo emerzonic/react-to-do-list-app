@@ -6,7 +6,9 @@ html{
 	margin: 10% auto;
 	background: rgb(245, 246, 247);
 	padding:2rem;
+	border-radius: 0.5rem;
 }
+
 
 .form-heading{
 	font-size: 1.5rem;
