@@ -3,6 +3,9 @@ import {
     Component
 } from 'react';
 import { Link } from "react-router-dom";
+import UsernameInput from '../Sections/UsernameInput';
+import PasswordInput from '../Sections/PasswordInput';
+import SubmitButton from '../Sections/SubmitButton';
 
 class Login extends Component {
     constructor(props) {
@@ -24,22 +27,12 @@ class Login extends Component {
 
 render() {
     return (
-        <form id="signinForm" className="ui form" onSubmit={this.handleSubmit}>
-        <h3>Login</h3>
+        <form className="ui form user-form" onSubmit={this.handleSubmit}>
+        <h3 className="form-heading">Login</h3>
         <div className="ui divider"></div>
-        <div className="required field">
-        <label>Username</label>
-            <div className="ui left icon input"> <i className="user icon"></i>
-            <input name="username" placeholder="Username" type="text" autoComplete="off"/>
-            </div>
-        </div>
-          <div className="required field">
-            <label>Password</label>
-            <div className="ui left icon input"><i className="lock icon"></i>
-          <input type="password" name="password" placeholder="Password"/>
-        </div>
-          </div>
-        <button type="submit" className="ui blue basic button submit-button">Login</button>
+            <UsernameInput/>
+            <PasswordInput/>
+            <SubmitButton {...this.props}/>
         <label>Don't have an account?</label>
         <Link  className="ui item user-link" to={"/signup"}>Sign Up</Link>
         <div className="ui error message"></div>
