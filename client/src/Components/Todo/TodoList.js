@@ -1,6 +1,5 @@
 import React from 'react';
-// import Moment from 'moment';
-
+import '../../App.css'
 const TodoList = (props) => (
             <div className="ui middle aligned divided list">
                 {props.todos.length > 0 ? props.todos.map((todo, i) =>
