@@ -43,6 +43,22 @@ router.get("/todos/:userId", (req, res) => {
     });
 });
 
+
+// ==============================================
+// Route to update todos
+// ==============================================
+router.put("/todos/:todoId", function(req, res){
+    Todo.findByIdAndUpdate(req.params.todoId, req.body, function(err, todo){
+        if (err) {
+            console.log(err)
+        } else {
+           res.end() 
+        }
+    })
+})
+
+
+
 // ==============================================
 // Route to delete an article
 // ==============================================
