@@ -12,7 +12,11 @@ const TodoList = (props) => (
                         </div>
                     </div>
                     <div className="content">
-                      <span className='pending' onClick={props.toggleComplete}>{todo.title}</span>
+                      <span 
+                        data-id={todo._id}
+                        className={todo.status ==='Pending'?'pending':'complete'} 
+                        onClick={props.toggleComplete}>{todo.title}
+                    </span>
                     </div>
                   </div>
                 ):""}
