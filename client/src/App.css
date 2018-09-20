@@ -108,3 +108,10 @@ html{
 	transform: 2s;
 }
 
+.todo-container{
+	height:250px;
+	overflow-y: scroll
+}
+
+
+
