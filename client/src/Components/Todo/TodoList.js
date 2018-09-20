@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.css'
 const TodoList = (props) => (
-            <div className="ui middle aligned divided list">
+            <div className="ui middle aligned divided list todo-container">
                 {props.todos.length > 0 ? props.todos.map((todo, i) =>
                     <div className="item todo-item" key={todo._id}>
                     <div className="left floated content delete-button">
