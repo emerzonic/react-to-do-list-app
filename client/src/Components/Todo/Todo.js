@@ -72,7 +72,6 @@ class Todos extends Component {
                 .then(() => {
                     this.getTodos()
                 })
-
         }
     }
 
