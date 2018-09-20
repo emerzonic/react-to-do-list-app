@@ -19,9 +19,9 @@ export default {
   },
 
   // Gets one todo
-  //  getOneTodo: function (todoId, userId) {
-  //   return axios.get("/todos/"+ todoId,  userId);
-  // },
+  updateTodos: function (todoId, updatedTodo) {
+    return axios.put("/todos/"+ todoId, updatedTodo);
+  },
 
   // Saves an todos to the database
   addNewTodos: function (userId, todo) {
