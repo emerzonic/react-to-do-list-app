@@ -93,7 +93,6 @@ class Todos extends Component {
     }
 
     render() {
-        console.log(this.state.todos)
         return (
             <div>
                 <TodoForm hanldeOnChange={this.handleOnChange} 
