@@ -2,7 +2,7 @@ import React from 'react';
 import {
     Component
 } from 'react';
-import API from "../../API/serverRequests";
+import axios from "axios";
 import Login from "./Login";
 import SignUp from './SignUp';
 import Signout from './LogOut';
@@ -17,7 +17,7 @@ class User extends Component {
 
         //This method handles user sign up
         this.handleUserSignup = (newUser) => {
-            API.sendNewUserData(newUser).then(res => {
+            axios.post('/signup', newUser).then(res => {
                 if (res.data.username) {
                     this.storeUserData(res)
                 } else {
@@ -28,7 +28,7 @@ class User extends Component {
 
         //This method handles user signin
         this.handleUserSignin = (user) => {
-            API.sendLoginData(user).then(res => {
+            axios.post('/signin', user).then(res => {
                 if (res.data.username) {
                     this.storeUserData(res)
                 } else {
