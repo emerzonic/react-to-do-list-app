@@ -6,7 +6,7 @@ const TodoForm = (props) => (
                 <div className="field">
                     <div className={props.error?"ui fluid action input error":"ui fluid action input"}>
                             <input 
-                                onChange={props.hanldeOnChange} type="text" name="todoText" 
+                                onChange={props.hanldeOnChange} class="todoInput" type="text" name="todoText" 
                                 placeholder="Add new task to todo list"
                             />
                         <button className="ui button" type="submit"><i className="plus icon"></i></button>
