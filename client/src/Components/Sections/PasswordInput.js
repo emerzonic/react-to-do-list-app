@@ -5,7 +5,7 @@ const PasswordInput = () => (
         <label>Password</label>
         <div className="ui left icon input">
             <i className="lock icon"></i>
-            <input type="password" name="password" placeholder="Password"/>
+            <input type="password" className="passwordInput" name="password" placeholder="Password"/>
         </div>
     </div>
 );
